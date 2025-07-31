@@ -12,7 +12,8 @@ class StaffController extends Controller
      */
     public function index()
     {
-        //
+        $staffs = Staff::paginate(10);
+        return view('staffs.index', compact('staffs'));
     }
 
     /**
@@ -36,7 +37,10 @@ class StaffController extends Controller
      */
     public function show(Staff $staff)
     {
-        //
+        $classes = Staff::find($staff->id)->classes->take(10);
+        $subjects = Staff::find($staff->id)->subjects->take(10);
+        $teacher = Staff::find($staff->id);
+        return view('staffs.show', compact('teacher', 'classes', 'subjects'));
     }
 
     /**

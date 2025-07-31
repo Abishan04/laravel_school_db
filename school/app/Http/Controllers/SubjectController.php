@@ -12,7 +12,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
+        $subjects = Subject::paginate(10);
+        return view('subjects.index', compact('subjects'));
     }
 
     /**
@@ -34,10 +35,12 @@ class SubjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Subject $subject)
-    {
-        //
-    }
+   public function show(Subject $subject)
+{
+    $classes = Subject::find($subject->id)->classes->take(10);
+    $teachers = Subject::find($subject->id)->staff->take(10);
+    return view('subjects.show', compact('subject', 'classes', 'teachers'));
+}
 
     /**
      * Show the form for editing the specified resource.
