@@ -37,8 +37,8 @@ class SubjectController extends Controller
      */
    public function show(Subject $subject)
 {
-    $classes = Subject::find($subject->id)->classes->take(10);
-    $teachers = Subject::find($subject->id)->staff->take(10);
+    $classes = $subject->classes->take(10);
+    $teachers = $subject->staff->take(10);
     return view('subjects.show', compact('subject', 'classes', 'teachers'));
 }
 

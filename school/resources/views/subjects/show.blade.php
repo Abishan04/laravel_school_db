@@ -6,7 +6,7 @@
     <div class="container">
         <div class="card bg-primary  mx-auto shadow">
             <div class="card-body col-md-12 mx-auto">
-                <h4 class="card-title text-center text-white my-3">Show Subjects List</h4>
+                <h4 class="card-title text-center text-white my-3">{{ $subject->subject_name }} Details</h4>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover table-dark text-center mt-2">
                       <tbody>
@@ -39,7 +39,7 @@
                 </div>
 
 
-                   <h4 class="card-title text-center text-white mb-3">Show Classes List</h4>
+                   <h4 class="card-title text-center text-white mb-3">{{ $subject->subject_name }} Classes List</h4>
                 <!-- Grade Info Table -->
                 <div class="table-responsive mt-2">
                     <table class="table table-bordered table-hover text-center ">
@@ -66,7 +66,7 @@
                         </tbody>
                     </table>
                 </div>
-    <h4 class="card-title text-center text-white mb-3">Show Teachers List</h4>
+    <h4 class="card-title text-center text-white mb-3">{{ $subject->subject_name }} Teachers List</h4>
                 <!-- Grade Info Table -->
                 <div class="table-responsive mt-2">
                     <table class="table table-bordered table-hover text-center ">

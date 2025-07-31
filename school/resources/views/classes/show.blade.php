@@ -7,7 +7,6 @@
                 <div class="card-body col-md-12 mx-auto">
 
                         <h4 class="card-title text-center text-white mb-3">{{ $class->class_name }} Details</h4>
-                    <!-- Grade Info Table -->
 
                     <div class="table-responsive mt-2">
                         <table class="table table-bordered table-hover text-center ">
@@ -71,7 +70,6 @@
 
 
                     <h4 class="card-title text-center text-white mb-3">{{ $class->class_name }} Teachers List</h4>
-                    <!-- Grade Info Table -->
                     <div class="table-responsive mt-2">
                         <table class="table table-bordered table-hover text-center ">
                             <thead class="table-dark">
@@ -107,7 +105,6 @@
                     </div>
 
                     <h4 class="card-title text-center text-white mb-3">{{ $class->class_name }} Students List</h4>
-                    <!-- Grade Info Table -->
                     <div class="table-responsive mt-2">
                         <table class="table table-bordered table-hover text-center ">
                             <thead class="table-dark">
