@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Subject extends Model
 {
     protected $table = 'subject';
-    // Define any relationships or methods specific to the Subject model here
     public function classes()
     {
-        return $this->belongsToMany(Class_name::class, 'subject_class', 'subject_id', 'class_id');
+        return $this->belongsToMany(Class_name::class, 'class_subject', 'subject_id', 'class_id');
     }
     public function students()
     {

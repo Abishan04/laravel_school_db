@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     protected $table = 'student';
-    // Define any relationships or methods specific to the Student model here
+
     public function class()
     {
         return $this->belongsTo(Class_name::class, 'class_id');
@@ -20,5 +20,5 @@ class Student extends Model
     {
         return $this->belongsToMany(Staff::class, 'staff_student', 'student_id', 'staff_id');
     }
-    // Add any additional methods or properties as needed
+
 }
