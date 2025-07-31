@@ -49,9 +49,6 @@
 
                     </div>
                 </div>
-                 {{-- <div class="d-flex justify-content-center">
-  <a href="/students/create" class="btn btn-info mt-3 text-white btn-block">Create</a>
-</div> --}}
             </div>
         </div>
     </div>

@@ -12,7 +12,8 @@ class ClassNameController extends Controller
      */
     public function index()
     {
-        //
+        $classes = Class_name::paginate(10);
+        return view('classes.index', compact('classes'));
     }
 
     /**
@@ -34,10 +35,14 @@ class ClassNameController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Class_name $class_name)
-    {
-        //
-    }
+  public function show(Class_name $class)
+{
+    $students = $class->students->take(10);
+    $teachers = $class->staff->take(10);
+    $subjects = $class->subjects->take(10);
+
+    return view('classes.show', compact('class', 'teachers', 'subjects', 'students'));
+}
 
     /**
      * Show the form for editing the specified resource.

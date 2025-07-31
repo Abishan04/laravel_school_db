@@ -2,6 +2,7 @@
 
 @section('content')
 <section class="py-4">
+
     <div class="container">
         <div class="card bg-primary  mx-auto shadow">
             <div class="card-body col-md-12 mx-auto">
@@ -10,7 +11,6 @@
                     <table class="table table-bordered table-hover table-dark text-center mt-2">
                       <tbody>
                             <tr>
-
                                         <th scope="col">Id</th>
                                          <td>{{ $subject->id }}</td>
                                          </tr>

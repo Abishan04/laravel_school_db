@@ -83,8 +83,8 @@
                    <h4 class="card-title text-center text-white mb-3">Show Classes List</h4>
                 <!-- Grade Info Table -->
                 <div class="table-responsive mt-2">
-                    <table class="table table-bordered table-hover text-center ">
-                        <thead class="table-dark">
+                    <table class="table table-bordered table-hover table-dark text-center ">
+                        <thead class="table-light">
                             <tr>
                                 <th scope="col">Id</th>
                                 <th scope="col">Class Name</th>

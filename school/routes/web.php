@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\ClassNameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,5 @@ Route::resource('students', 'App\Http\Controllers\StudentController');
 Route::resource('subjects', 'App\Http\Controllers\SubjectController');
 
 Route::resource('staffs', 'App\Http\Controllers\StaffController');
+
+Route::resource('classes', 'App\Http\Controllers\ClassNameController');
