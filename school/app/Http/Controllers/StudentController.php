@@ -13,7 +13,7 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::paginate(10);
-        return view('students.index', compact('students'));
+        return view('backend.students.index', compact('students'));
     }
 
     /**
