@@ -20,11 +20,11 @@ Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
 Route::get('register', [AuthController::class, 'register']);
 Route::post('register', [AuthController::class, 'store_register'])->name('register');
-Route::post('logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('dashboard', [AuthController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 
 // Protected Resources
-Route::resource('students', StudentController::class)->middleware('auth');
+Route::resource('students', StudentController::class)->middleware(['auth','role:student']);
 Route::resource('subjects', SubjectController::class)->middleware('auth');
 Route::resource('staffs', StaffController::class)->middleware('auth');
 Route::resource('classes', ClassNameController::class)->middleware('auth');

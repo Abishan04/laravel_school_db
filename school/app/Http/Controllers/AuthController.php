@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+
 
 class AuthController extends Controller
 {
@@ -35,17 +38,28 @@ class AuthController extends Controller
     return redirect('login');
 
     }
-    public function store_register(Request $request)
-    {
-     $user = new User();
-     $user->name = $request->name;
-     $user->email = $request->email;
-     $user->password = $request->password;
-     $user->save();
+//     public function store_register(Request $request)
+//     {
+//      $user = new User();
+//      $user->name = $request->name;
+//      $user->email = $request->email;
+//      $user->password = $request->password;
+//      $user->save();
+
+//     return redirect('login')->with('success', 'Registration successful!');
+// }
+
+public function store_register(Request $request)
+{
+    $user = new User();
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->password = Hash::make($request->password);
+    $user->save();
+    $user->assignRole('student');
 
     return redirect('login')->with('success', 'Registration successful!');
 }
-
 
     public function dashboard()
     {
