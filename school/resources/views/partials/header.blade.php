@@ -34,8 +34,8 @@
                             </div>
 
                             <ul class="topbar-link">
-                                <li><a href="">Login</a></li>
-                                <li><a href="Register">Register</a></li>
+                                <li><a href="/login">Login</a></li>
+                                <li><a href="register">Register</a></li>
                             </ul>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                                 <a class="nav-link active" href="">home</a>
                             </li>
                             <li class="nav-item dropdown">
-                              <a class="nav-link" href="abou">About</a>
+                              <a class="nav-link" href="about">About</a>
                             </li>
                             <li class="nav-item dropdown has-megamenu">
                                 <a class="nav-link" href="">Blog</a>

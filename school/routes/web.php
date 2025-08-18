@@ -1,32 +1,30 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\ClassNameController;
+use App\Http\Controllers\AuthController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-Route::get('main', function () {
-    return view('layouts.main');
-});
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('students', 'App\Http\Controllers\StudentController');
 
-Route::resource('subjects', 'App\Http\Controllers\SubjectController');
+Route::get('main', function () {
+    return view('layouts.main');
+});
 
-Route::resource('staffs', 'App\Http\Controllers\StaffController');
+// Auth Routes
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
+Route::get('register', [AuthController::class, 'register']);
+Route::post('register', [AuthController::class, 'store_register'])->name('register');
+Route::post('logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::get('dashboard', [AuthController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 
-Route::resource('classes', 'App\Http\Controllers\ClassNameController');
+// Protected Resources
+Route::resource('students', StudentController::class)->middleware('auth');
+Route::resource('subjects', SubjectController::class)->middleware('auth');
+Route::resource('staffs', StaffController::class)->middleware('auth');
+Route::resource('classes', ClassNameController::class)->middleware('auth');

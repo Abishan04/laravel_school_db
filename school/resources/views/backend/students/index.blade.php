@@ -42,7 +42,7 @@
                             <td>{{ $student->first_name }}</td>
                             <td>{{ $student->last_name }}</td>
                             <td>{{ $student->gender }}</td>
-                            <td>{{ $student->className->class_name }}</td>
+                            <td>{{ $student->class->class_name }}</td>
                             <td>{{ $student->date_of_birth }}</td>
                             <td>{{ $student->stu_nic_no }}</td>
                     </tr>
