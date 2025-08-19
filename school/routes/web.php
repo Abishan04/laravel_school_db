@@ -18,13 +18,14 @@ Route::get('main', function () {
 // Auth Routes
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
-Route::get('register', [AuthController::class, 'register']);
+ Route::get('register', [AuthController::class, 'register'])->middleware(['auth','role:admin']);
 Route::post('register', [AuthController::class, 'store_register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('dashboard', [AuthController::class, 'dashboard'])->middleware('auth')->name('dashboard');
+Route::get('dashboard', [AuthController::class, 'dashboard']);
 
 // Protected Resources
-Route::resource('students', StudentController::class)->middleware(['auth','role:student']);
+
+Route::resource('students', StudentController::class)->middleware('auth');
 Route::resource('subjects', SubjectController::class)->middleware('auth');
 Route::resource('staffs', StaffController::class)->middleware('auth');
 Route::resource('classes', ClassNameController::class)->middleware('auth');

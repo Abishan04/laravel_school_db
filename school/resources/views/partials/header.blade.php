@@ -33,10 +33,26 @@
                                 </select>
                             </div>
 
-                            <ul class="topbar-link">
-                                <li><a href="/login">Login</a></li>
-                                <li><a href="register">Register</a></li>
-                            </ul>
+           <ul class="topbar-link">
+    @auth
+        <li>
+            <div class="d-flex gap-2">
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button class="btn btn-outline-info text-light" type="submit">Logout</button>
+                </form>
+
+                @if (Auth::user()->hasRole('admin'))
+                    <a href="{{ route('register') }}">
+                        <button class="btn btn-outline-info text-light">Register</button>
+                    </a>
+                @endif
+            </div>
+        </li>
+    @else
+        <li><a href="{{ route('login') }}">Login</a></li>
+    @endauth
+</ul>
                         </div>
                     </div>
                 </div>
@@ -65,7 +81,7 @@
                                 <a class="nav-link active" href="">home</a>
                             </li>
                             <li class="nav-item dropdown">
-                              <a class="nav-link" href="about">About</a>
+                                <a class="nav-link" href="about">About</a>
                             </li>
                             <li class="nav-item dropdown has-megamenu">
                                 <a class="nav-link" href="">Blog</a>
@@ -141,8 +157,8 @@
                         <div class="widget__form-search-bar  ">
                             <div class="row no-gutters">
                                 <div class="col">
-                                    <input class="form-control border-secondary border-right-0 rounded-0" value=""
-                                        placeholder="Search">
+                                    <input class="form-control border-secondary border-right-0 rounded-0"
+                                        value="" placeholder="Search">
                                 </div>
                                 <div class="col-auto">
                                     <button class="btn btn-outline-secondary border-left-0 rounded-0 rounded-right">

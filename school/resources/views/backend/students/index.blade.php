@@ -1,16 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-    <h1 class="mt-4">Students</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Students</li>
-    </ol>
-<div class="d-flex justify-content-end mb-3">
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-        <button type="submit" class="btn btn-outline-danger">Logout</button>
-    </form>
-</div>
     <div class="card mb-4">
         <div class="card-header">
             <i class="fas fa-table me-1"></i>

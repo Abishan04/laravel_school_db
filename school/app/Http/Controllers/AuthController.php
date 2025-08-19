@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Spatie\Permission\Models\Role;
-
 
 class AuthController extends Controller
 {
@@ -19,7 +18,11 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('students');
+            if (Auth::user()->hasRole('admin')) {
+                return redirect()->intended('login');
+            } else {
+                return redirect()->route('students.index');
+            }
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
@@ -29,43 +32,31 @@ class AuthController extends Controller
     {
         return view('auth.register');
     }
-    public function logout( Request $request)
+    public function logout(Request $request)
     {
-       Auth::logout();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-    return redirect('login');
-
+        return redirect('login');
     }
-//     public function store_register(Request $request)
-//     {
-//      $user = new User();
-//      $user->name = $request->name;
-//      $user->email = $request->email;
-//      $user->password = $request->password;
-//      $user->save();
 
-//     return redirect('login')->with('success', 'Registration successful!');
-// }
-
-public function store_register(Request $request)
-{
-    $user = new User();
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->password = Hash::make($request->password);
-    $user->save();
-    $user->assignRole('student');
-
-    return redirect('login')->with('success', 'Registration successful!');
-}
+    public function store_register(Request $request)
+    {
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        $user->assignRole('admin');
+        return redirect('login')->with('success', 'Registration successful!');
+    }
 
     public function dashboard()
     {
         if (Auth::check()) {
-            return view('students.index');
+            return view('dashboard');
         }
+        return redirect('login');
     }
-
 }
