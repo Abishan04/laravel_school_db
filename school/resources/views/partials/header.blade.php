@@ -33,26 +33,33 @@
                                 </select>
                             </div>
 
-           <ul class="topbar-link">
-    @auth
-        <li>
-            <div class="d-flex gap-2">
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button class="btn btn-outline-info text-light" type="submit">Logout</button>
-                </form>
+                            <ul class="topbar-link">
+                                @auth
+                                    <li>
+                                        <div class="d-flex gap-2">
+                                            <form action="{{ route('logout') }}" method="POST">
+                                                @csrf
+                                                <button class="btn btn-outline-info text-light"
+                                                    type="submit">Logout</button>
+                                            </form>
 
-                @if (Auth::user()->hasRole('admin'))
-                    <a href="{{ route('register') }}">
-                        <button class="btn btn-outline-info text-light">Register</button>
-                    </a>
-                @endif
-            </div>
-        </li>
-    @else
-        <li><a href="{{ route('login') }}">Login</a></li>
-    @endauth
-</ul>
+                                            @if (Auth::user()->hasRole('admin'))
+                                                <a href="{{ route('register') }}">
+                                                    <button class="btn btn-outline-info text-light">Register</button>
+                                                </a>
+                                            @endif
+                                        </div>
+                                    </li>
+                                @endauth
+
+                                @guest
+                                    <li>
+                                        <a href="{{ route('login') }}">
+                                            <button class="btn btn-outline-info text-light">Login</button>
+                                        </a>
+                                    </li>
+                                @endguest
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -86,6 +93,7 @@
                             <li class="nav-item dropdown has-megamenu">
                                 <a class="nav-link" href="">Blog</a>
                             </li>
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Pages </a>
                                 <ul class="dropdown-menu animate fade-up">
@@ -94,9 +102,10 @@
                                     <li><a class="dropdown-item" href=""> 404 Error </a>
                                     <li><a class="dropdown-item" href="/students"> Students </a>
                                     <li><a class="dropdown-item" href="/subjects"> Subjects </a>
-                                    <li><a class="dropdown-item" href="/grades"> Grades </a>
+                                    <li><a class="dropdown-item" href="/classes"> Grades </a>
                                 </ul>
                             </li>
+                            @role('admin')
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"> Create </a>
                                 <ul class="dropdown-menu animate fade-up">
@@ -105,9 +114,9 @@
                                     <li><a class="dropdown-item" href="/grades/create"> Grades </a>
                                 </ul>
                             </li>
+                            @endrole
                             <li class="nav-item"><a class="nav-link" href=""> contact </a></li>
                         </ul>
-
 
                         <!-- Search bar.// -->
                         <ul class="navbar-nav ">

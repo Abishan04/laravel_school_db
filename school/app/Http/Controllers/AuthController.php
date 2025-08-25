@@ -19,9 +19,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             if (Auth::user()->hasRole('admin')) {
-                return redirect()->intended('login');
-            } else {
-                return redirect()->route('students.index');
+                return redirect()->intended('dashboard');
             }
         }
         return back()->withErrors([
@@ -48,7 +46,7 @@ class AuthController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-        $user->assignRole('admin');
+       $user->assignRole($request->role);
         return redirect('login')->with('success', 'Registration successful!');
     }
 

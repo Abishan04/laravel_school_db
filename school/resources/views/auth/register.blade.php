@@ -12,7 +12,7 @@
                     <div class="card mx-auto" style="max-width:520px;">
                         <article class="card-body">
                             <header class="mb-4">
-                                <h4 class="card-title">Sign up</h4>
+                                <h4 class="card-title">Register</h4>
                             </header>
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
@@ -28,6 +28,14 @@
                                     <small class="form-text text-muted">We'll never share your email with anyone
                                         else.</small>
                                 </div> <!-- form-group end.// -->
+                                <div class="form-group">
+                                    <label>Role</label>
+                                    <select class="form-control" name="role">
+                                        <option value="admin">User</option>
+                                        <option value="student">Student</option>
+                                        <option value="staff">Teacher</option>
+                                    </select>
+                                </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label>Create password</label>

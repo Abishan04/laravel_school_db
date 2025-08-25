@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+
 
 class StudentController extends Controller
 {
@@ -21,7 +24,12 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        // if (Auth::user()->hasRole('student')) {
+        //     return view('students.create');
+        // }else{
+        //     return view('auth.login');
+        // }
+        return view('students.create');
     }
 
     /**
@@ -37,7 +45,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        //
+        
     }
 
     /**

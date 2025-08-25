@@ -25,7 +25,7 @@ Route::get('dashboard', [AuthController::class, 'dashboard']);
 
 // Protected Resources
 
-Route::resource('students', StudentController::class)->middleware('auth');
-Route::resource('subjects', SubjectController::class)->middleware('auth');
+Route::resource('students', StudentController::class)->middleware(['auth','role:student']);
+Route::resource('subjects', SubjectController::class)->middleware(['auth','role:staff|admin']);
 Route::resource('staffs', StaffController::class)->middleware('auth');
 Route::resource('classes', ClassNameController::class)->middleware('auth');
